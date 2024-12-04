@@ -20,7 +20,7 @@ public class OrderService {
         Long productId = request.getProductId();
 
         try {
-            ProductResponseDto product = productClient.getProduct(productId);
+            ProductResponseDto product = productClient.getProduct(productId, "newHeader");
         } catch (Exception e) {
             throw new RuntimeException("Product not found");
         }
