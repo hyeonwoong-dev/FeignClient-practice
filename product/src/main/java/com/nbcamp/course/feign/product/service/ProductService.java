@@ -1,5 +1,7 @@
 package com.nbcamp.course.feign.product.service;
 
+import com.nbcamp.course.feign.product.exception.CustomNotFoundException;
+import com.nbcamp.course.feign.product.exception.CustomTooManyRequestException;
 import com.nbcamp.course.feign.product.model.Product;
 import com.nbcamp.course.feign.product.model.ProductResponseDto;
 import com.nbcamp.course.feign.product.repository.ProductRepository;
@@ -21,7 +23,10 @@ public class ProductService {
     }
 
     public ProductResponseDto getProduct(Long id) {
-        Product product = productRepository.findById(id).orElseThrow(() -> new RuntimeException("Product not found"));
+        if (id == -999) {
+            throw new CustomTooManyRequestException("Too many request");
+        }
+        Product product = productRepository.findById(id).orElseThrow(() -> new CustomNotFoundException("Product not found"));
         return new ProductResponseDto(product.getId(), product.getName(), product.getPrice());
     }
 }
