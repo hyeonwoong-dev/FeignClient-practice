@@ -1,9 +1,6 @@
 package com.nbcamp.course.feign.order.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
@@ -11,6 +8,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder(access = AccessLevel.PRIVATE)
+@Table(name = "p_order")
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
