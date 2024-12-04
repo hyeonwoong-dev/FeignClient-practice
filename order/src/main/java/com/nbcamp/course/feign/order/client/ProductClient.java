@@ -9,6 +9,6 @@ import org.springframework.web.bind.annotation.RequestHeader;
 @FeignClient(name = "product", configuration = ProductFeignClientConfig.class)
 public interface ProductClient {
 
-    @GetMapping("/products/{id}")
+    @GetMapping(value="/products/{id}", headers = "key2=value2")
     ProductResponseDto getProduct(@PathVariable("id") Long id, @RequestHeader("key1") String header);
 }
