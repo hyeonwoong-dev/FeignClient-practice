@@ -4,5 +4,7 @@ import lombok.Getter;
 
 @Getter
 public class ProductResponseDto {
-    private Long productId;
+    private Long id;
+    private String name;
+    private int price;
 }
