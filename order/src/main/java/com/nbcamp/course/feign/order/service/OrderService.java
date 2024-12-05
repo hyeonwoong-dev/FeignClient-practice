@@ -17,11 +17,10 @@ public class OrderService {
     private final ProductClient productClient;
 
     public void createOrder(OrderRequestDto request) {
-        // TODO: Product service 에 productId에 맞는 상품이 있는지 확인
-        Long productId = request.getProductId();
-        ProductResponseDto product = productClient.getProduct(productId, "newHeader");
 
-        // TODO: Order 객체 생성
+        Long productId = request.getProductId();
+        // TODO: Product service 에 productId에 맞는 상품이 있는지 productClient를 사용하여 확인해보세요.
+
         Order order = Order.create(productId);
         orderRepository.save(order);
     }
