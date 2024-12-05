@@ -2,6 +2,7 @@ package com.nbcamp.course.feign.order.client;
 
 import feign.Logger;
 import feign.RequestInterceptor;
+import feign.Retryer;
 import feign.codec.ErrorDecoder;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -27,5 +28,10 @@ public class ProductFeignClientConfig {
     @Bean
     public ErrorDecoder errorDecoder() {
         return new CustomErrorDecoder();
+    }
+
+    @Bean
+    public Retryer retryer() {
+        return new Retryer.Default(1000, 300000, 5);
     }
 }
