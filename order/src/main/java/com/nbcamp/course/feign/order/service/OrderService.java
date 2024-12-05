@@ -1,5 +1,6 @@
 package com.nbcamp.course.feign.order.service;
 
+import com.nbcamp.course.feign.order.exception.CustomNotFoundException;
 import com.nbcamp.course.feign.order.client.ProductClient;
 import com.nbcamp.course.feign.order.model.Order;
 import com.nbcamp.course.feign.order.model.OrderRequestDto;
@@ -31,7 +32,7 @@ public class OrderService {
     }
 
     public OrderResponseDto getOrder(Long id) {
-        Order order = orderRepository.findById(id).orElseThrow(() -> new RuntimeException("Order not found"));
+        Order order = orderRepository.findById(id).orElseThrow(() -> new CustomNotFoundException("Order not found"));
         return new OrderResponseDto(order.getId(), order.getProductId());
     }
 }
