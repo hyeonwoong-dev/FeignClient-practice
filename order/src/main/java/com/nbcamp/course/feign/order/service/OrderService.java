@@ -19,12 +19,7 @@ public class OrderService {
     public void createOrder(OrderRequestDto request) {
         // TODO: Product service 에 productId에 맞는 상품이 있는지 확인
         Long productId = request.getProductId();
-
-        try {
-            ProductResponseDto product = productClient.getProduct(productId, "newHeader");
-        } catch (Exception e) {
-            throw new RuntimeException("Product not found");
-        }
+        ProductResponseDto product = productClient.getProduct(productId, "newHeader");
 
         // TODO: Order 객체 생성
         Order order = Order.create(productId);
