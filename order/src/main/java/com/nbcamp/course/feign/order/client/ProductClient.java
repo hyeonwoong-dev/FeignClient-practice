@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestHeader;
 @FeignClient(
         name = "product"
         // TODO: FeignClient config를 적용해보세요.
-        // TODO: Fallback 클래스를 적용해보세요.
 )
 public interface ProductClient {
 
